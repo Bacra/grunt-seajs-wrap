@@ -1,0 +1,41 @@
+{
+  "name": "grunt-seajs-wrap",
+  "description": "Wrap package width seajs",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Bacra/grunt-seajs-wrap",
+  "author": {
+    "name": "Bacra Woo",
+    "email": "bacra.woo@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Bacra/grunt-seajs-wrap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Bacra/grunt-seajs-wrap/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Bacra/grunt-seajs-wrap/blob/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+  },
+  "peerDependencies": {
+    "grunt": "~0.4"
+  },
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.4.1"
+  },
+  "keywords": [
+    "grunt",
+    "gruntplugin",
+    "seajs"
+  ]
+}
