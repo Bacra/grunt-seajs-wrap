@@ -8,18 +8,12 @@ module.exports = function jsEngine(file, options, fn)
 {
 	fs.readFile(file, function(err, content)
 	{
-		if (err)
-		{
-			fn(err);
-		}
-		else
-		{
-			fn(null,
-			[
-				'define(function(require, exports, module){',
+		if (err) return fn(err);
+
+		fn(null, [
+			'define(function(require, exports, module){',
 				content.toString(),
-				'});'
-			].join('\n'));
-		}
+			'});'
+		].join('\n'));
 	});
 };

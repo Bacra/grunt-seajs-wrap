@@ -70,6 +70,7 @@ Wrap package width seajs
 		}
 		else
 		{
+			res.setHeader('Content-Type', 'application/javascript');
 			res.render(req.params[0]);
 		}
 	});
