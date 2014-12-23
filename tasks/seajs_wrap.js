@@ -109,7 +109,9 @@ module.exports = function(grunt)
 				{
 					_oCfg.remove_window_vars.forEach(function(_asVarName)
 					{
-						_sNewFileContent.push('delete window.'+_asVarName+';');
+						// _sNewFileContent.push('delete window.'+_asVarName+';');
+						// ie 9 8 error width delete
+						_sNewFileContent.push('window.'+_asVarName+' = null;');
 					});
 				}
 
