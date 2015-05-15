@@ -7,12 +7,7 @@ module.exports = function(grunt)
 			from_path: '',
 			target_path: '',
 			separator: '\n',
-			replace_content: {
-				define: '__tmp_define__',
-				require: '__tmp_require__',
-				module: '__tmp_module__',
-				exports: '__tmp_exports__'
-			},
+			remove_define: true,
 			nowrap: false,
 			process: null
 		});
@@ -41,6 +36,11 @@ module.exports = function(grunt)
 				var _sNewFileContent = _oOpts.nowrap === true ? [] : ['define(function(require, exports, module){'];
 				// wrap, fix this
 				_sNewFileContent.push(';(function(){');
+
+				if (_oOpts.remove_define)
+				{
+					_sNewFileContent.push('var define;');
+				}
 
 				// add requires
 				if (typeof(_oCfg.inner_requires) == 'object')
@@ -72,17 +72,8 @@ module.exports = function(grunt)
 					}
 				}
 
-				var _sFileContent = grunt.file.read(_sFromPath+_asFile)
-						.replace(/^\/\/# *sourceMappingURL *=.+$/igm, '');	// remove map file link
-
-				// replace key words
-				if (_oOpts.replace_content)
-				{
-					for(var _sOriginContent in _oOpts.replace_content)
-					{
-						_sFileContent = _sFileContent.replace(new RegExp('\\b'+_sOriginContent+'\\b', 'g'), _oOpts.replace_content[_sOriginContent]);
-					}
-				}
+				// remove map file link
+				var _sFileContent = grunt.file.read(_sFromPath+_asFile).replace(/^\/\/# *sourceMappingURL *=.+$/igm, '');
 
 				// add file content
 				_sNewFileContent.push(_sFileContent);
@@ -105,7 +96,7 @@ module.exports = function(grunt)
 					}
 				}
 
-				if (Array.isArray(_oCfg.remove_window_vars))
+				if (grunt.util._.isArray(_oCfg.remove_window_vars))
 				{
 					_oCfg.remove_window_vars.forEach(function(_asVarName)
 					{
