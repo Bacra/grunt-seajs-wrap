@@ -1,7 +1,7 @@
 {
   "name": "grunt-seajs-wrap",
   "description": "Wrap package width seajs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/Bacra/grunt-seajs-wrap",
   "main": "./express/seajs_wrap_engine.js",
   "author": {
